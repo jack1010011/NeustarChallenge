@@ -1,0 +1,46 @@
+@model Store.Models.ItemsList
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ItemsList</h4>
+    <hr />
+    <dl class="media-middle">
+        <dt class="col-sm-6 col-md-offset-0 col-md-6 col-lg-6 ">
+            <div id="myCarousel" class="carousel slide" data-fullscreen="true" > 
+                
+                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+
+
+
+
+
+        </dt>
+        <dd>
+            <dl class="col-sm-5 col-sm-offset-1 col-md-5 col-md-offset-1 col-lg-5 col-lg-offset-1 ">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd>
+                    <h2>@Html.DisplayFor(model => model.Title)</h2>
+                </dd><br />
+            </dl>
+        </dd>
+    </dl>
+
+
+</div>
+
