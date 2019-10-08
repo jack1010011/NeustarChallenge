@@ -1,0 +1,62 @@
+@model Store.Models.ItemsList
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Add Domain</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label">Domain Name</label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+
+
+@*<h2>Existing Domains</h2>*@
+<script>
+
+    $.ajax({
+        url: '@Url.Action("GetFunnelPositions", "ItemsLists")',
+        async: false,
+        method: 'GET',
+        datatype: "JSON",
+        success: function (result) {
+            $.each(result, function (key, position) {
+                content += "<dt>Domain: </dt><dd>" + result.Title + "</dd>";
+                content += " <br/>";                
+            });
+        },
+        error: function () { alert("Something went wrong..") },
+    }).done(function (data) {
+        //var jsonData = $.parseJSON(data.Result);
+        //return (jsonData);
+    });
+    $('#details').html(content);
+</script>
+
+<div id="details"></div>
+
+<div>
+    <a asp-action="Index">Go to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
