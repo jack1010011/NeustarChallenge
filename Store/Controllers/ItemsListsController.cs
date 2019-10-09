@@ -25,10 +25,29 @@ namespace Store.Controllers
             return View(await _context.ItemsList.ToListAsync());
         }
 
-        public async Task<IActionResult> GetFunnelPositions()
+
+
+
+
+
+
+
+        [HttpGet]
+        public JsonResult GetFunnelPositions()
         {
-            return View(await _context.ItemsList.ToListAsync());
+            var myJsonList = _context.ItemsList.ToList();
+            return Json(myJsonList);
         }
+
+
+
+
+
+
+
+
+
+
 
 
 

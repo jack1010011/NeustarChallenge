@@ -27,36 +27,32 @@
 <br />
 <br />
 
-
-@*<h2>Existing Domains</h2>*@
-<script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<ol></ol>
+    <script>
 
     $.ajax({
         url: '@Url.Action("GetFunnelPositions", "ItemsLists")',
         async: false,
         method: 'GET',
         datatype: "JSON",
-        success: function (result) {
-            $.each(result, function (key, position) {
-                content += "<dt>Domain: </dt><dd>" + result.Title + "</dd>";
-                content += " <br/>";                
+        success: function (data) {
+            $.each(data, function (id, x) {
+                $("ol").append("<li>"+x.title+"</li>");
             });
         },
         error: function () { alert("Something went wrong..") },
     }).done(function (data) {
-        //var jsonData = $.parseJSON(data.Result);
-        //return (jsonData);
     });
-    $('#details').html(content);
-</script>
+    </script>
 
-<div id="details"></div>
 
-<div>
-    <a asp-action="Index">Go to List</a>
-</div>
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <div>
+        <a asp-action="Index">Go to List</a>
+    </div>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+
+
